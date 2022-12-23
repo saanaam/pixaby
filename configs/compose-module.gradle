@@ -1,0 +1,34 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-parcelize'
+apply from: "$rootDir/configs/android_test_dependencies.gradle"
+apply from: "$rootDir/configs/android_commons.gradle"
+
+android {
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.1.1'
+    }
+}
+
+dependencies {
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:${library.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${library.lifecycle}"
+    implementation "androidx.hilt:hilt-navigation-compose:${library.hiltCompose}"
+    implementation "androidx.compose.runtime:runtime:${library.compose}"
+    implementation "androidx.compose.material:material:${library.compose}"
+    implementation "androidx.compose.foundation:foundation:${library.compose}"
+    implementation "androidx.compose.foundation:foundation-layout:${library.compose}"
+    implementation "androidx.compose.ui:ui-tooling:${library.compose}"
+    implementation "androidx.compose.ui:ui-tooling-preview:${library.compose}"
+    implementation "androidx.compose.animation:animation:${library.compose}"
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.1"
+    implementation "androidx.navigation:navigation-compose:${library.navigation}"
+    implementation "com.google.dagger:hilt-android:${library.hilt}"
+    kapt "com.google.dagger:hilt-android-compiler:${library.hilt}"
+    implementation "androidx.paging:paging-compose:${library.paging}"
+
+}
