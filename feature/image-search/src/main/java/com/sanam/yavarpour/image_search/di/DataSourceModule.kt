@@ -12,10 +12,10 @@ import com.sanam.yavarpour.image_search.data.repositoty.datasource.SearchImageRe
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
+import dagger.hilt.android.components.ViewModelComponent
 
 @Module
-@InstallIn(SingletonComponent::class)
+@InstallIn(ViewModelComponent::class)
 class DataSourceModule {
     @Provides
     fun provideSearchImageRemoteDataSource(
@@ -24,7 +24,7 @@ class DataSourceModule {
 
     @Provides
     fun provideImageLocalDataSource(
-        imageDao : ImagesDao
+        imageDao: ImagesDao
     ): ImageLocalSource = ImageLocalDataSource(imageDao)
 
     @Provides
