@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_screen_search_item_photoby">Photo by: %s </string>
+    <string name="search_screen_search_item_an_image_by">an image by </string>
+    <string name="search_screen_search_item_with"> with </string>
+    <string name="search_screen_search_item_tags"> tags </string>
+    <string name="search_screen_search_view_search_here">Search here... </string>
+    <string name="search_screen_search_view_search_icon">Search Icon</string>
+    <string name="search_screen_search_view_close_icon">Close Icon</string>
+    <string name="search_screen_dialog_title">Are You Sure?</string>
+    <string name="search_screen_dialog_message">Do you want to see the details of this image?</string>
+    <string name="search_screen_dialog_yes">Yes</string>
+    <string name="search_screen_dialog_no">Dismiss</string>
+    <string name="search_screen_error_message">An Error occurred</string>
+    <string name="search_screen_retry">Retry</string>
+    <string name="test_tag_search_screen_search_view">searchView</string>
+    <string name="like_count">Like counts</string>
+    <string name="show_more">Show more</string>
+    <string name="likes">%d likes</string>
+</resources>

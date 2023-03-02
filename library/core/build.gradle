@@ -10,7 +10,9 @@ dependencies {
     //DI
     implementation "com.google.dagger:hilt-android:${library.hilt}"
     implementation "com.google.dagger:hilt-android:${library.hilt}"
-    implementation "com.squareup.retrofit2:retrofit:${library.retrofit}"
     kapt "com.google.dagger:hilt-compiler:${library.hilt}"
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:${library.retrofit}"
+    //paging
     implementation "androidx.room:room-paging:${library.roomPagingVersion}"
 }

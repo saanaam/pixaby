@@ -16,12 +16,14 @@ android {
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:${library.appCompat}"
+    implementation(project(":feature:image-search"))
+    implementation(project(":library:core"))
     implementation "androidx.activity:activity-compose:${library.composeActivity}"
     implementation "androidx.hilt:hilt-navigation-compose:${library.hiltCompose}"
     implementation "androidx.compose.material:material:${library.compose}"
     implementation "com.google.accompanist:accompanist-insets:0.22.0-rc"
     implementation "androidx.navigation:navigation-compose:${library.navigation}"
     implementation "com.google.dagger:hilt-android:${library.hilt}"
+    implementation "com.google.code.gson:gson:${library.gson}"
     kapt "com.google.dagger:hilt-android-compiler:${library.hilt}"
 }

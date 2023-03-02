@@ -32,12 +32,15 @@ ext {
             composeMaterial     : '1.0.0-alpha12',
             room                : '2.5.0-alpha02',
             roomPagingVersion   : '2.5.0-alpha02',
-            paging              : '1.0.0-alpha15'
+            paging              : '1.0.0-alpha15',
+            coil                : '2.1.0',
+            skydovesCoilVersion : "1.5.2",
+            gson                : "2.9.0"
     ]
     buildVersions = [
-            compileSdk: 31,
+            compileSdk: 32,
             minSdk    : 28,
-            targetSdk : 31,
+            targetSdk : 32,
     ]
 
     appModules = [

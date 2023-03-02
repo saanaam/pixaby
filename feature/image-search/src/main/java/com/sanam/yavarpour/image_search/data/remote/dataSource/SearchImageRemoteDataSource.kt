@@ -10,7 +10,7 @@ import javax.inject.Inject
 class SearchImageRemoteDataSource @Inject constructor(
     private val searchService: SearchService
 ) : BaseApiResponse(), SearchImageRemoteSource {
-    override suspend fun searchImage(query: String, page: Int): Resource<ImageSearchResponse> {
-        return safeApiCall { searchService.searchImage(query, page) }
-    }
+
+    override suspend fun searchImage(query: String, page: Int): Resource<ImageSearchResponse> =
+        safeApiCall { searchService.searchImage(query, page) }
 }

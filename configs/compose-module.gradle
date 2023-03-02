@@ -30,5 +30,7 @@ dependencies {
     implementation "com.google.dagger:hilt-android:${library.hilt}"
     kapt "com.google.dagger:hilt-android-compiler:${library.hilt}"
     implementation "androidx.paging:paging-compose:${library.paging}"
+    implementation "io.coil-kt:coil-compose:${library.coil}"
+    implementation "com.github.skydoves:landscapist-coil:${library.skydovesCoilVersion}"
 
 }

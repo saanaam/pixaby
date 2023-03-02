@@ -10,6 +10,8 @@ class ImageLocalDataSource @Inject constructor(
     private val imageDao: ImagesDao
 ) : ImageLocalSource {
     override fun getAllImages(): PagingSource<Int, HitDto> = imageDao.getAllImages()
+
     override suspend fun addImages(images: List<HitDto>) = imageDao.addImages(images)
+
     override suspend fun deleteAllImages() = imageDao.deleteAllImages()
 }

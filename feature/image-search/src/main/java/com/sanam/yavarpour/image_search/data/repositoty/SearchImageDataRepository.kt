@@ -3,16 +3,19 @@ package com.sanam.yavarpour.image_search.data.repositoty
 import androidx.paging.*
 import com.sanam.yavarpour.core.PagingRemoteMediator
 import com.sanam.yavarpour.core.Resource
+import com.sanam.yavarpour.core.model.Hit
 import com.sanam.yavarpour.core.model.RemoteKey
 import com.sanam.yavarpour.image_search.data.dto.HitDto
 import com.sanam.yavarpour.image_search.data.dto.ImagesRemoteKeys
 import com.sanam.yavarpour.image_search.data.repositoty.datasource.ImageLocalKeysSource
 import com.sanam.yavarpour.image_search.data.repositoty.datasource.ImageLocalSource
 import com.sanam.yavarpour.image_search.data.repositoty.datasource.SearchImageRemoteSource
+import com.sanam.yavarpour.image_search.data.repositoty.mapper.toHit
 import com.sanam.yavarpour.image_search.data.util.Constants.ITEMS_PER_PAGE
 import com.sanam.yavarpour.image_search.data.util.toPixabayQuery
 import com.sanam.yavarpour.image_search.domain.repository.SearchImageRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
@@ -21,7 +24,8 @@ class SearchImageDataRepository @Inject constructor(
     private val imageLocalSource: ImageLocalSource,
     private val imageLocalKeysSource: ImageLocalKeysSource
 ) : SearchImageRepository {
-    override suspend fun searchImage(query: String): Flow<PagingData<HitDto>> {
+
+    override suspend fun searchImage(query: String): Flow<PagingData<Hit>> {
         val pagingSourceFactory = { imageLocalSource.getAllImages() }
         return Pager(
             config = PagingConfig(pageSize = ITEMS_PER_PAGE),
@@ -32,7 +36,7 @@ class SearchImageDataRepository @Inject constructor(
                 query.toPixabayQuery(),
             ),
             pagingSourceFactory = pagingSourceFactory,
-        ).flow
+        ).flow.map { value -> value.map { it.toHit() } }
     }
 }
 
@@ -42,6 +46,7 @@ class SearchImageRemoteMediator(
     private val imageLocalKeysSource: ImageLocalKeysSource,
     private val query: String
 ) : PagingRemoteMediator<HitDto>() {
+
     override suspend fun getDataFromRemoteDataSource(
         vararg params: Any,
         page: Int

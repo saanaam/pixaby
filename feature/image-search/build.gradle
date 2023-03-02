@@ -9,6 +9,7 @@ apply from: "$rootDir/configs/compose-module.gradle"
 
 dependencies {
     implementation(project(":library:core"))
+    implementation(project(":library:ui"))
     implementation "com.squareup.okhttp3:okhttp:${library.okHttp}"
     implementation "com.squareup.okhttp3:logging-interceptor:${library.okHttp}"
     implementation "com.squareup.retrofit2:retrofit:${library.retrofit}"
@@ -18,4 +19,5 @@ dependencies {
     implementation "androidx.room:room-runtime:${library.room}"
     implementation "androidx.room:room-ktx:${library.room}"
     implementation "androidx.room:room-paging:${library.roomPagingVersion}"
+
 }

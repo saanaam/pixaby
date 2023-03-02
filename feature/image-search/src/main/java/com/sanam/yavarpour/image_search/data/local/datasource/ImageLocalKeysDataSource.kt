@@ -8,9 +8,12 @@ import javax.inject.Inject
 class ImageLocalKeysDataSource @Inject constructor(
     private val imagesRemoteKeysDao: ImagesRemoteKeysDao
 ) : ImageLocalKeysSource {
+
     override suspend fun getRemoteKeys(id: String): ImagesRemoteKeys =
         imagesRemoteKeysDao.getRemoteKeys(id)
+
     override suspend fun addAllRemoteKeys(remoteKeys: List<ImagesRemoteKeys>) =
         imagesRemoteKeysDao.addAllRemoteKeys(remoteKeys)
+
     override suspend fun deleteAllRemoteKeys() = imagesRemoteKeysDao.deleteAllRemoteKeys()
 }
