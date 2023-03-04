@@ -51,7 +51,6 @@ abstract class PagingRemoteMediator<Value : Any> constructor(
                     nextPage
                 }
             }
-            Log.e("currentPage : " , currentPage.toString())
             getDataFromRemoteDataSource(requestParams, page = currentPage).let { response ->
                 if (response.valueOrNull != null) {
                     val endOfPaginationReached = response.valueOrNull == null

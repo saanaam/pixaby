@@ -20,11 +20,11 @@ import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.items
 import com.sanam.yavarpour.image_search.R
+import com.sanam.yavarpour.image_search.presentation.components.EmptyView
 import com.sanam.yavarpour.image_search.presentation.components.ErrorAndRetry
 import com.sanam.yavarpour.image_search.presentation.components.SearchView
 import com.sanam.yavarpour.image_search.presentation.components.imageItem
 import com.sanam.yavarpour.ui.util.CircularProgressIndicatorSize
-import com.sanam.yavarpour.ui.util.DefaultStandardPadding
 import com.sanam.yavarpour.ui.util.ProgressPadding
 import com.sanam.yavarpour.ui.util.SearchListItemsSpace
 
@@ -52,7 +52,11 @@ fun SearchScreen(
                 })
         }
     ) {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -98,7 +102,6 @@ fun SearchScreen(
                                             .width(CircularProgressIndicatorSize)
                                             .height(CircularProgressIndicatorSize),
                                         color = colorResource(id = R.color.green_500)
-
                                     )
                                 }
                             }
@@ -107,11 +110,14 @@ fun SearchScreen(
                             val e = searchedImages.loadState.append as LoadState.Error
                             item {
                                 e.error.localizedMessage?.let {
-                                    ErrorAndRetry(it) {
+                                    ErrorAndRetry(Modifier, it) {
                                         retry()
                                     }
                                 } ?: run {
-                                    ErrorAndRetry(stringResource(R.string.search_screen_error_message)) {
+                                    ErrorAndRetry(
+                                        Modifier,
+                                        stringResource(R.string.search_screen_error_message)
+                                    ) {
                                         retry()
                                     }
                                 }
@@ -121,18 +127,26 @@ fun SearchScreen(
                             val e = searchedImages.loadState.refresh as LoadState.Error
                             item {
                                 e.error.localizedMessage?.let {
-                                    ErrorAndRetry(it) {
+                                    ErrorAndRetry(Modifier, it) {
                                         retry()
                                     }
                                 } ?: run {
-                                    ErrorAndRetry(stringResource(R.string.search_screen_error_message)) {
+                                    ErrorAndRetry(
+                                        Modifier,
+                                        stringResource(R.string.search_screen_error_message)
+                                    ) {
                                         retry()
                                     }
                                 }
                             }
                         }
-
-
+                        loadState.append is LoadState.NotLoading && !loadState.append.endOfPaginationReached -> {
+                            item {
+                                if (searchedImages.itemCount < 1) {
+                                    EmptyView(Modifier)
+                                }
+                            }
+                        }
                     }
                 }
             }

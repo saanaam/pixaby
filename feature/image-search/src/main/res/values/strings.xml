@@ -17,4 +17,5 @@
     <string name="like_count">Like counts</string>
     <string name="show_more">Show more</string>
     <string name="likes">%d likes</string>
+    <string name="empty_view">Oops! No items found</string>
 </resources>
