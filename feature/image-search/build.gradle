@@ -20,4 +20,10 @@ dependencies {
     implementation "androidx.room:room-ktx:${library.room}"
     implementation "androidx.room:room-paging:${library.roomPagingVersion}"
 
+    implementation "io.mockk:mockk:1.11.0"
+    implementation "io.mockk:mockk-android:1.11.0"
+    implementation "io.mockk:mockk-agent-jvm:1.11.0"
+    
+    implementation "com.google.truth:truth:1.1.3"
+
 }

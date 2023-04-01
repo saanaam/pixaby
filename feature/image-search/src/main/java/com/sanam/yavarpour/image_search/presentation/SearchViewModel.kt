@@ -23,7 +23,7 @@ class SearchViewModel @Inject constructor(
     val selectedItem = _selectedItem.asSharedFlow()
 
     init {
-        searchImage("All")
+            searchImage("All")
     }
 
     fun onEvent(event: SearchEvent) {
@@ -47,7 +47,7 @@ class SearchViewModel @Inject constructor(
         }
     }
 
-    private fun searchImage(query: String = state.value.searchedValue) {
+     fun searchImage(query: String = state.value.searchedValue) {
         if (query.length >= 3) {
             viewModelScope.launch {
                 searchImageUseCase(query = query).cachedIn(viewModelScope).collect {
